@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Vaibhav Rawat</title>
+<meta name="description" content="Get in touch with Vaibhav Rawat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --amber:#E8590C;--ink-light:#F4F2FA;--ink-soft-light:#C9C4DA;
+    --glass:rgba(255,255,255,0.08);--glass-border:rgba(255,255,255,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;min-height:100vh;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+    color:var(--ink-light);position:relative;
+    background:
+      radial-gradient(ellipse 900px 700px at 15% 10%, rgba(232,89,222,0.30), transparent 60%),
+      radial-gradient(ellipse 800px 700px at 90% 20%, rgba(29,146,235,0.26), transparent 60%),
+      radial-gradient(ellipse 900px 800px at 70% 75%, rgba(255,111,0,0.18), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 30% 90%, rgba(124,58,237,0.26), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 50% 50%, rgba(232,89,222,0.14), transparent 65%),
+      #0B0A1A;
+    background-attachment:fixed;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+  .stars{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 120px 80px, #fff, transparent),
+      radial-gradient(1px 1px at 200px 150px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 400px 200px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
+      radial-gradient(1px 1px at 60px 220px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 650px 60px, #fff, transparent),
+      radial-gradient(1px 1px at 800px 180px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 900px 90px, #fff, transparent),
+      radial-gradient(1px 1px at 150px 350px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 350px 320px, #fff, transparent),
+      radial-gradient(1px 1px at 550px 380px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 750px 340px, #fff, transparent),
+      radial-gradient(1px 1px at 950px 300px, #fff, transparent);
+    background-repeat:repeat;background-size:1000px 420px;opacity:.7;
+  }
+  header{position:sticky;top:0;z-index:50;background:rgba(11,10,26,0.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:#fff;}
+  .nav ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
+  .nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft-light);transition:color .15s;}
+  .nav a:hover, .nav a:focus-visible{color:var(--amber);}
+  .nav a.active{color:#fff;}
+
+  main{padding:80px 0 100px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;color:#D9C9FF;
+    background:var(--glass);border:1px solid var(--glass-border);padding:6px 12px;border-radius:100px;margin-bottom:24px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 20px;color:#fff;max-width:820px;}
+  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft-light);max-width:640px;margin:0 0 40px;}
+
+  .panel{
+    background:rgba(244,242,250,0.95);border:1px solid rgba(255,255,255,0.4);border-radius:14px;
+    padding:36px;box-shadow:0 20px 50px rgba(0,0,0,0.25);color:#171A1C;max-width:560px;
+  }
+  label{display:block;font-size:13px;font-weight:600;margin:0 0 6px;color:#171A1C;}
+  input, textarea{
+    width:100%;padding:12px 14px;margin-bottom:20px;border-radius:8px;
+    border:1px solid #DCD6EE;font-family:'Inter',sans-serif;font-size:14px;background:#fff;color:#171A1C;
+  }
+  textarea{min-height:120px;resize:vertical;}
+  input:focus, textarea:focus{outline:2px solid var(--amber);outline-offset:1px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:6px;
+    font-size:14px;font-weight:600;border:none;cursor:pointer;background:#171A1C;color:#fff;
+  }
+  .btn:hover{background:var(--amber);}
+
+  .direct{margin-top:36px;}
+  .direct a{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-light);text-decoration:none;margin-right:28px;}
+  .direct a:hover{color:var(--amber);}
+
+  footer{padding:40px 0;border-top:1px solid var(--glass-border);margin-top:60px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-soft-light);}
+  .foot-links{display:flex;gap:20px;}
+  .foot-links a{text-decoration:none;color:var(--ink-soft-light);}
+  .foot-links a:hover{color:var(--amber);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Vaibhav Rawat</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow mono"><span class="dot"></span>CONTACT</span>
+    <h1>Let's talk.</h1>
+    <p class="lede">Whether it's a product question, a collaboration, or just a hello — drop a note and I'll get back to you.</p>
+
+    <form class="panel" action="mailto:hello@vaibhavbuilds.in" method="post" enctype="text/plain">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" class="btn">Send message</button>
+    </form>
+
+    <div class="direct">
+      <a href="mailto:hello@vaibhavbuilds.in">✉ hello@vaibhavbuilds.in</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Vaibhav Rawat</span>
+    <div class="foot-links">
+      <a href="mailto:hello@vaibhavbuilds.in">Email</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
