@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Products — Vaibhav Rawat</title>
+<meta name="description" content="AI product concepts designed end-to-end, from problem to mechanism.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --amber:#E8590C;--ink-light:#F4F2FA;--ink-soft-light:#C9C4DA;
+    --glass:rgba(255,255,255,0.08);--glass-border:rgba(255,255,255,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;min-height:100vh;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+    color:var(--ink-light);position:relative;
+    background:
+      radial-gradient(ellipse 900px 700px at 15% 10%, rgba(232,89,222,0.30), transparent 60%),
+      radial-gradient(ellipse 800px 700px at 90% 20%, rgba(29,146,235,0.26), transparent 60%),
+      radial-gradient(ellipse 900px 800px at 70% 75%, rgba(255,111,0,0.18), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 30% 90%, rgba(124,58,237,0.26), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 50% 50%, rgba(232,89,222,0.14), transparent 65%),
+      #0B0A1A;
+    background-attachment:fixed;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+  .stars{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 120px 80px, #fff, transparent),
+      radial-gradient(1px 1px at 200px 150px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 400px 200px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
+      radial-gradient(1px 1px at 60px 220px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 650px 60px, #fff, transparent),
+      radial-gradient(1px 1px at 800px 180px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 900px 90px, #fff, transparent),
+      radial-gradient(1px 1px at 150px 350px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 350px 320px, #fff, transparent),
+      radial-gradient(1px 1px at 550px 380px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 750px 340px, #fff, transparent),
+      radial-gradient(1px 1px at 950px 300px, #fff, transparent);
+    background-repeat:repeat;background-size:1000px 420px;opacity:.7;
+  }
+  header{position:sticky;top:0;z-index:50;background:rgba(11,10,26,0.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;flex-wrap:wrap;gap:10px;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:#fff;}
+  .nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0;flex-wrap:wrap;}
+  .nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft-light);transition:color .15s;}
+  .nav a:hover, .nav a:focus-visible{color:var(--amber);}
+  .nav a.active{color:#fff;}
+
+  main{padding:80px 0 100px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;color:#D9C9FF;
+    background:var(--glass);border:1px solid var(--glass-border);padding:6px 12px;border-radius:100px;margin-bottom:24px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 20px;color:#fff;max-width:820px;}
+  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft-light);max-width:680px;margin:0 0 40px;}
+
+  .prod-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;}
+  @media (max-width:900px){.prod-grid{grid-template-columns:repeat(2, 1fr);}}
+  @media (max-width:640px){.prod-grid{grid-template-columns:1fr;}}
+
+  .prod-card{
+    background:rgba(244,242,250,0.95);border:1px solid rgba(255,255,255,0.4);border-radius:14px;
+    padding:24px;box-shadow:0 16px 40px rgba(0,0,0,0.22);color:#171A1C;
+    display:flex;flex-direction:column;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .prod-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,0.28);}
+  .prod-status{
+    display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.05em;color:#8A5A00;
+    background:#FFE9C7;padding:3px 9px;border-radius:100px;margin-bottom:12px;align-self:flex-start;
+  }
+  .prod-card h3{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;line-height:1.3;}
+  .prod-card p{color:#4B5259;font-size:13.5px;line-height:1.6;margin:0 0 16px;flex:1;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .prod-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .prod-tags span{font-size:10.5px;font-weight:500;color:#171A1C;background:#EDEAF7;border:1px solid #DCD6EE;padding:3px 9px;border-radius:100px;}
+  .prod-open{font-size:12.5px;font-weight:600;color:var(--amber);margin-top:auto;}
+
+  .modal-overlay{
+    display:none;position:fixed;inset:0;z-index:100;
+    background:rgba(11,10,26,0.75);backdrop-filter:blur(4px);
+    align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:#F4F2FA;color:#171A1C;border-radius:16px;max-width:640px;width:100%;
+    padding:36px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.4);margin-bottom:40px;
+  }
+  .modal-close{
+    position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;
+    cursor:pointer;color:#4B5259;line-height:1;padding:4px;
+  }
+  .modal-close:hover{color:#171A1C;}
+  .modal-status{
+    display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;color:#8A5A00;
+    background:#FFE9C7;padding:4px 10px;border-radius:100px;margin-bottom:12px;
+  }
+  .modal-box h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:0 0 20px;padding-right:24px;}
+  .modal-section{margin-bottom:22px;}
+  .modal-section h4{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--amber);margin:0 0 8px;}
+  .modal-section p{color:#3A3F47;font-size:14.5px;line-height:1.65;margin:0;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-list span{font-size:12px;font-weight:500;color:#171A1C;background:#EDEAF7;border:1px solid #DCD6EE;padding:5px 11px;border-radius:100px;}
+  .roadmap-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .roadmap-list li{font-size:13.5px;display:flex;align-items:center;gap:8px;}
+  .rm-done{color:#1a7f37;font-weight:600;}
+  .rm-pending{color:#8A8FA3;}
+
+  footer{padding:40px 0;border-top:1px solid var(--glass-border);margin-top:60px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-soft-light);}
+  .foot-links{display:flex;gap:20px;}
+  .foot-links a{text-decoration:none;color:var(--ink-soft-light);}
+  .foot-links a:hover{color:var(--amber);}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">Vaibhav Rawat</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <span class="eyebrow mono"><span class="dot"></span>AI–PM</span>
+    <h1>AI Product Concepts</h1>
+    <p class="lede">Self-directed product work — each one taken from problem to a working mechanism. Click any card for the full breakdown.</p>
+
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalStatus" class="modal-status"></div>
+    <h2 id="modalTitle"></h2>
+
+    <div class="modal-section">
+      <h4>Problem</h4>
+      <p id="modalProblem"></p>
+    </div>
+    <div class="modal-section">
+      <h4>Solution</h4>
+      <p id="modalSolution"></p>
+    </div>
+    <div class="modal-section">
+      <h4>Mechanism</h4>
+      <p id="modalMechanism"></p>
+    </div>
+    <div class="modal-section">
+      <h4>Key Features</h4>
+      <div class="tag-list" id="modalFeatures"></div>
+    </div>
+    <div class="modal-section">
+      <h4>My Role</h4>
+      <div class="tag-list" id="modalRole"></div>
+    </div>
+    <div class="modal-section">
+      <h4>Roadmap</h4>
+      <ul class="roadmap-list" id="modalRoadmap"></ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Vaibhav Rawat</span>
+    <div class="foot-links">
+      <a href="mailto:hello@vaibhavbuilds.in">Email</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const products = [{"name": "AI Personal Agent for G-Suite & WhatsApp", "status": "Prototype", "tags": ["Gemini/OpenAI", "n8n", "Gmail API", "Calendar API", "WhatsApp"], "problem": "Professionals run their day across five disconnected surfaces \u2014 inbox, calendar, docs, tasks, WhatsApp \u2014 and spend more time context-switching between them than acting.", "solution": "A conversational agent, reachable entirely through WhatsApp, that reads intent from a message, routes it to the right Google API (Gmail, Calendar, Drive), executes the action, and replies in plain language \u2014 no app-switching required.", "mechanism": "Intent detection \u2192 API call \u2192 LLM-formatted response, with the agent holding enough context to handle a full back-and-forth, not just single commands.", "features": ["Email summarization", "Smart reply generation", "Calendar management", "WhatsApp assistant", "Meeting scheduling", "Daily briefings", "Reminder automation"], "role": ["Product discovery", "Workflow design", "AI agent planning", "API integration strategy", "Feature prioritization"], "roadmap": [["Gmail integration", true], ["Calendar automation", true], ["Google Drive search", false], ["Voice assistant", false], ["Multi-agent collaboration", false]]}, {"name": "AI Personal Lifestyle Agent", "status": "Prototype", "tags": ["OpenAI", "n8n", "Health APIs", "Finance APIs"], "problem": "Fitness, budgeting, travel planning, and habit tracking each live in a separate app, so no single system actually knows the user well enough to help proactively.", "solution": "One assistant with persistent memory of the user's goals and patterns, generating recommendations and nudges on its own rather than waiting to be asked.", "mechanism": "Goal input \u2192 behavior/activity analysis \u2192 recommendation engine \u2192 proactive notification \u2014 the loop runs continuously, not on-demand.", "features": ["Fitness tracking", "Meal planning", "Expense monitoring", "Habit tracking", "Travel planning", "Smart reminders", "Goal progress"], "role": ["Product vision", "User persona definition", "Feature roadmap", "AI experience design", "MVP planning"], "roadmap": [["Lifestyle dashboard", true], ["Smart recommendations", true], ["Wearable integration", false], ["Voice assistant", false], ["Family profiles", false]]}, {"name": "OSRM Route Optimization for Quick Commerce Riders", "status": "Prototype", "tags": ["OSRM", "OpenStreetMap", "n8n", "Python"], "problem": "Standard navigation optimizes for shortest distance to one destination \u2014 it has no concept of multi-order sequencing, rider capacity, or delivery priority.", "solution": "A routing engine purpose-built for quick commerce: sequences multiple stops by priority and capacity, not just proximity.", "mechanism": "Built on OSRM + OpenStreetMap rather than a metered maps API \u2014 routing and ETA calculation run on open map data, so traffic-aware ETA estimation doesn't incur a per-call cost the way a commercial maps API would at delivery-fleet volume.", "features": ["Multi-stop optimization", "ETA prediction", "Route sequencing", "Distance matrix", "Rider assignment", "Delivery prioritization", "Map visualization"], "role": ["Product strategy", "Routing logic design", "Workflow definition", "API planning", "Operations research", "KPI definition"], "roadmap": [["Route optimization", true], ["ETA engine", true], ["Live traffic integration", false], ["Fleet analytics", false], ["AI route learning", false]]}, {"name": "AI Customer Support Agent", "status": "Prototype", "tags": ["OpenAI", "RAG", "Vector DB", "n8n"], "problem": "Support teams burn hours answering the same handful of questions on repeat, which delays response time on the cases that actually need a human.", "solution": "An agent that answers directly from a knowledge base and escalates automatically the moment its confidence drops below a threshold \u2014 so humans only see what genuinely needs them.", "mechanism": "Query \u2192 vector search against knowledge base \u2192 LLM response \u2192 confidence check \u2192 auto-escalate or reply.", "features": ["AI chat support", "Knowledge base search", "Ticket categorization", "Smart escalation", "Conversation history", "Multi-language support"], "role": ["Customer journey mapping", "Product discovery", "AI workflow design", "Prompt strategy", "Feature planning"], "roadmap": [["AI chat", true], ["Knowledge search", true], ["CRM integration", false], ["Voice support", false], ["Agent analytics", false]]}, {"name": "AI NPS & Customer Feedback Analyzer", "status": "Prototype", "tags": ["OpenAI", "NLP", "Power BI"], "problem": "Feedback arrives scattered across surveys, app reviews, and support tickets \u2014 nobody reads all of it, so recurring issues get missed until they're already a pattern.", "solution": "Every feedback source feeds one pipeline that scores sentiment, clusters recurring themes, and ranks them by frequency \u2014 turning raw text into a prioritized action list.", "mechanism": "Feedback ingestion \u2192 sentiment scoring \u2192 topic clustering \u2192 ranked dashboard.", "features": ["Sentiment analysis", "Theme detection", "NPS dashboard", "Trend analysis", "AI recommendations", "Executive reports"], "role": ["KPI definition", "Product discovery", "Dashboard planning", "AI workflow design", "Prioritization"], "roadmap": [["Sentiment analysis", true], ["Dashboard", true], ["Live integrations", false], ["Competitor benchmarking", false], ["Predictive churn", false]]}, {"name": "AI Resume & Job Fit Analyzer", "status": "Prototype", "tags": ["OpenAI", "Embeddings", "n8n"], "problem": "Candidates get rejected by an ATS before a human ever reads their resume, with zero visibility into why.", "solution": "Scores a resume directly against a specific job description before submission \u2014 surfaces missing keywords and skill gaps, then rewrites the weak sections.", "mechanism": "Resume + JD \u2192 embedding-based similarity scoring \u2192 gap analysis \u2192 targeted rewrite suggestions.", "features": ["Resume parsing", "ATS score", "Skill gap analysis", "Keyword suggestions", "Resume rewrite", "Export report"], "role": ["Product discovery", "PRD creation", "AI workflow design", "UX planning", "Feature prioritization"], "roadmap": [["ATS analysis", true], ["AI suggestions", true], ["Interview preparation", false], ["Cover letter generator", false], ["Job recommendations", false]]}, {"name": "AI Lead Enrichment Tool", "status": "Prototype", "tags": ["OpenAI", "LinkedIn APIs", "n8n", "CRM"], "problem": "Reps lose real selling time to manual research \u2014 company background, decision-makers, context \u2014 before every single outreach.", "solution": "Automates that research end-to-end and writes the enriched profile straight into the CRM, so the rep opens a ready-to-use lead instead of a blank one.", "mechanism": "Lead input \u2192 company/contact enrichment \u2192 AI-generated summary \u2192 CRM write-back.", "features": ["Company research", "Contact enrichment", "AI lead summary", "CRM integration", "Personalized outreach", "Lead scoring"], "role": ["Product strategy", "User research", "Feature definition", "Workflow design", "Integration planning"], "roadmap": [["Lead research", true], ["AI summaries", true], ["Email personalization", false], ["Sales analytics", false], ["Automated outreach", false]]}];
+
+function escapeHtml(str){
+  return (str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+const grid = document.getElementById('prodGrid');
+
+function cardHtml(item, i){
+  const tags = item.tags.slice(0,3).map(t => `<span>${escapeHtml(t)}</span>`).join('');
+  return `
+    <div class="prod-card" data-idx="${i}">
+      <span class="prod-status">${escapeHtml(item.status)}</span>
+      <h3>${escapeHtml(item.name)}</h3>
+      <p>${escapeHtml(item.problem)}</p>
+      <div class="prod-tags">${tags}</div>
+      <span class="prod-open">View full breakdown →</span>
+    </div>
+  `;
+}
+
+grid.innerHTML = products.map((p, i) => cardHtml(p, i)).join('');
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const modalStatus = document.getElementById('modalStatus');
+const modalTitle = document.getElementById('modalTitle');
+const modalProblem = document.getElementById('modalProblem');
+const modalSolution = document.getElementById('modalSolution');
+const modalMechanism = document.getElementById('modalMechanism');
+const modalFeatures = document.getElementById('modalFeatures');
+const modalRole = document.getElementById('modalRole');
+const modalRoadmap = document.getElementById('modalRoadmap');
+
+function openModal(item){
+  modalStatus.textContent = item.status;
+  modalTitle.textContent = item.name;
+  modalProblem.textContent = item.problem;
+  modalSolution.textContent = item.solution;
+  modalMechanism.textContent = item.mechanism;
+  modalFeatures.innerHTML = item.features.map(f => `<span>${escapeHtml(f)}</span>`).join('');
+  modalRole.innerHTML = item.role.map(r => `<span>${escapeHtml(r)}</span>`).join('');
+  modalRoadmap.innerHTML = item.roadmap.map(([label, done]) =>
+    `<li><span class="${done ? 'rm-done' : 'rm-pending'}">${done ? '✓' : '◻'}</span> ${escapeHtml(label)}</li>`
+  ).join('');
+  modalOverlay.classList.add('open');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function closeModal(){
+  modalOverlay.classList.remove('open');
+}
+
+grid.querySelectorAll('.prod-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const i = parseInt(card.getAttribute('data-idx'), 10);
+    openModal(products[i]);
+  });
+});
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
