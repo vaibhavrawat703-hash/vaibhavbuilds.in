@@ -4,191 +4,449 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — Vaibhav Rawat</title>
-<meta name="description" content="Case studies in AI products, automation, and logistics/warehouse technology.">
+<meta name="description" content="AI Product Manager building intelligent systems for logistics — AI agents, n8n automations, and warehouse tech.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --amber:#E8590C;--ink-light:#F4F2FA;--ink-soft-light:#C9C4DA;
-    --glass:rgba(255,255,255,0.08);--glass-border:rgba(255,255,255,0.16);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;min-height:100vh;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
-    color:var(--ink-light);position:relative;
-    background:
-      radial-gradient(ellipse 900px 700px at 15% 10%, rgba(232,89,222,0.30), transparent 60%),
-      radial-gradient(ellipse 800px 700px at 90% 20%, rgba(29,146,235,0.26), transparent 60%),
-      radial-gradient(ellipse 900px 800px at 70% 75%, rgba(255,111,0,0.18), transparent 60%),
-      radial-gradient(ellipse 700px 600px at 30% 90%, rgba(124,58,237,0.26), transparent 60%),
-      radial-gradient(ellipse 600px 500px at 50% 50%, rgba(232,89,222,0.14), transparent 65%),
-      #0B0A1A;
-    background-attachment:fixed;
-  }
-  a{color:inherit;}
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
-  @media (max-width:640px){.wrap{padding:0 20px;}}
-  .stars{
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:
-      radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 120px 80px, #fff, transparent),
-      radial-gradient(1px 1px at 200px 150px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
-      radial-gradient(1px 1px at 400px 200px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
-      radial-gradient(1px 1px at 60px 220px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 650px 60px, #fff, transparent),
-      radial-gradient(1px 1px at 800px 180px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 900px 90px, #fff, transparent),
-      radial-gradient(1px 1px at 150px 350px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 350px 320px, #fff, transparent),
-      radial-gradient(1px 1px at 550px 380px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 750px 340px, #fff, transparent),
-      radial-gradient(1px 1px at 950px 300px, #fff, transparent);
-    background-repeat:repeat;background-size:1000px 420px;opacity:.7;
-  }
-  header{position:sticky;top:0;z-index:50;background:rgba(11,10,26,0.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:#fff;}
-  .nav ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
-  .nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft-light);transition:color .15s;}
-  .nav a:hover, .nav a:focus-visible{color:var(--amber);}
-  .nav a.active{color:#fff;}
+:root {
+  --bg: #07070a;
+  --surface: #0f0f13;
+  --surface-raised: #14141a;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.16);
+  --text-p: #f0f0f2;
+  --text-s: #9a9aa2;
+  --text-t: #5e5e66;
+  --accent: #c9a45c;
+  --accent-dim: rgba(201,164,92,0.10);
+  --accent-glow: rgba(201,164,92,0.22);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.7s;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-p);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
 
-  main{padding:80px 0 100px;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;color:#D9C9FF;
-    background:var(--glass);border:1px solid var(--glass-border);padding:6px 12px;border-radius:100px;margin-bottom:24px;
-  }
-  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
-  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 20px;color:#fff;max-width:820px;}
-  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft-light);max-width:680px;margin:0 0 20px;}
+#starCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 100; width: 0%; box-shadow: 0 0 10px var(--accent-glow); }
 
-  .cat-section{margin-top:64px;scroll-margin-top:100px;}
-  .cat-head{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
-  .cat-code{font-size:11px;font-weight:600;letter-spacing:.06em;color:#fff;background:var(--amber);padding:4px 10px;border-radius:100px;}
-  .cat-head h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:0;color:#fff;}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-size: 15px; font-weight: 500; letter-spacing: 0.04em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a {
+  font-size: 14px; color: var(--text-s); position: relative; transition: color 0.3s var(--ease);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+  background: var(--accent); transition: width 0.4s var(--ease);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text-p); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  font-size: 13px; font-weight: 500; padding: 8px 18px;
+  background: var(--accent); color: var(--bg); border-radius: var(--radius-sm); transition: all 0.3s var(--ease);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
 
-  .proj-card{
-    background:rgba(244,242,250,0.95);border:1px solid rgba(255,255,255,0.4);border-radius:14px;
-    padding:28px;box-shadow:0 20px 50px rgba(0,0,0,0.25);margin-bottom:20px;color:#171A1C;
-  }
-  .proj-card h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;margin:0 0 10px;}
-  .proj-card p{color:#4B5259;font-size:14.5px;line-height:1.65;margin:0 0 10px;}
-  .proj-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-  .proj-meta span{font-size:11.5px;font-weight:500;color:#171A1C;background:#EDEAF7;border:1px solid #DCD6EE;padding:4px 10px;border-radius:100px;}
+section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px; margin: 0 auto; }
+.sec-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent); margin-bottom: 16px;
+  opacity: 0; transform: translateY(12px); transition: all var(--dur) var(--ease);
+}
+.sec-label.revealed { opacity: 1; transform: translateY(0); }
 
-  .proj-more{display:none;}
-  .proj-more.open{display:block;}
-  .read-more-btn{
-    background:none;border:none;padding:0;margin-top:4px;
-    font-size:13px;font-weight:600;color:var(--amber);cursor:pointer;
-    display:inline-flex;align-items:center;gap:4px;
-  }
-  .read-more-btn:hover{text-decoration:underline;}
-  .read-more-btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.hero { padding-top: 140px; padding-bottom: 100px; }
+.hero h1 {
+  font-size: clamp(36px, 6vw, 56px); font-weight: 500; line-height: 1.08;
+  letter-spacing: -0.02em; margin-bottom: 20px;
+  opacity: 0; transform: translateY(30px); transition: all 0.9s var(--ease) 0.1s;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 18px; line-height: 1.6; color: var(--text-s); max-width: 520px; margin-bottom: 32px;
+  opacity: 0; transform: translateY(20px); transition: all 0.9s var(--ease) 0.25s;
+}
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(16px); transition: all 0.9s var(--ease) 0.4s;
+}
+.hero.revealed h1, .hero.revealed p, .hero.revealed .hero-btns { opacity: 1; transform: translateY(0); }
 
-  footer{padding:40px 0;border-top:1px solid var(--glass-border);}
-  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-soft-light);}
-  .foot-links{display:flex;gap:20px;}
-  .foot-links a{text-decoration:none;color:var(--ink-soft-light);}
-  .foot-links a:hover{color:var(--amber);}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+.btn-primary {
+  font-size: 14px; font-weight: 500; padding: 14px 28px;
+  background: var(--accent); color: var(--bg); border-radius: var(--radius-sm); display: inline-block;
+  transition: all 0.3s var(--ease);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px var(--accent-glow); }
+.btn-ghost {
+  font-size: 14px; font-weight: 500; padding: 14px 28px;
+  background: transparent; color: var(--text-p); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); display: inline-block; transition: all 0.3s var(--ease);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
+  transition: all 0.4s var(--ease); opacity: 0; transform: translateY(40px);
+}
+.card.revealed { opacity: 1; transform: translateY(0); }
+.card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.card-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--accent-dim); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+.card p { font-size: 14px; line-height: 1.55; color: var(--text-s); }
+
+.project {
+  display: grid; grid-template-columns: 1fr 180px; gap: 32px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 32px; margin-bottom: 16px; transition: all 0.4s var(--ease);
+  opacity: 0; transform: translateY(40px); position: relative; overflow: hidden;
+}
+.project.revealed { opacity: 1; transform: translateY(0); }
+.project::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--accent); opacity: 0; transition: opacity 0.4s var(--ease);
+}
+.project:hover::before { opacity: 1; }
+.project:hover { border-color: var(--border-hover); transform: translateX(4px); }
+.project h3 { font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+.project-meta { font-size: 12px; color: var(--text-t); margin-bottom: 12px; }
+.project p { font-size: 15px; line-height: 1.6; color: var(--text-s); margin-bottom: 16px; }
+.project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px; padding: 5px 12px; border-radius: 6px;
+  background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);
+}
+.project-stats {
+  display: flex; flex-direction: column; gap: 16px;
+  border-left: 1px solid var(--border); padding-left: 24px;
+}
+.stat-num { font-size: 28px; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 12px; color: var(--text-t); margin-top: 2px; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: all 0.3s var(--ease); opacity: 0; transform: translateY(24px);
+}
+.contact-item.revealed { opacity: 1; transform: translateY(0); }
+.contact-item:hover { border-color: var(--accent); background: var(--surface-raised); }
+.contact-item svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
+.contact-item span { font-size: 14px; font-weight: 500; }
+.contact-sub { font-size: 12px; color: var(--text-t); margin-top: 2px; font-weight: 400; }
+
+footer {
+  position: relative; z-index: 1; text-align: center; padding: 40px 24px;
+  border-top: 1px solid var(--border); color: var(--text-t); font-size: 13px;
+}
+
+.read-more-btn {
+  background: none; border: none; padding: 0; margin-top: 4px;
+  font-size: 13px; font-weight: 600; color: var(--accent); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.read-more-btn:hover { text-decoration: underline; }
+.proj-more { display: none; margin-top: 12px; }
+.proj-more.open { display: block; }
+.proj-more p { font-size: 14px; color: var(--text-s); line-height: 1.65; margin-bottom: 10px; }
+
+@media (max-width: 640px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .project { grid-template-columns: 1fr; }
+  .project-stats { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 20px; flex-direction: row; gap: 24px; }
+  .nav-links { gap: 16px; }
+  .nav-cta { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  section { padding: 80px 20px; }
+  .hero { padding-top: 120px; }
+}
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"></div>
+<canvas id="starCanvas"></canvas>
+<div class="progress" id="progress"></div>
 
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="brand">Vaibhav Rawat</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+<nav>
+  <a href="index.html" class="logo">vaibhav<span>.</span>builds</a>
+  <div class="nav-links">
+    <a href="index.html" class="">Home</a>
+    <a href="about.html" class="">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="ai-products.html" class="">AI Products</a>
+    <a href="automations.html" class="">Automations</a>
+    <a href="contact.html" class="nav-cta">Let's talk</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="wrap">
-    <span class="eyebrow mono"><span class="dot"></span>WMS</span>
-    <h1>Logistics &amp; warehouse product work.</h1>
-    <p class="lede">Product work on the systems that move inventory and orders — from warehouse operations to last-mile visibility.</p>
 
-    <div class="cat-section" id="logistics">
-      <div class="cat-head"><span class="cat-code mono">WMS</span><h2>Logistics &amp; Warehouse Tech</h2></div>
+<section class="hero scroll-reveal">
+  <div class="sec-label" style="color: var(--text-t); margin-bottom: 20px;">WMS</div>
+  <h1>Logistics & warehouse product work.</h1>
+  <p>Product work on the systems that move inventory and orders — from warehouse operations to last-mile visibility.</p>
+</section>
 
-      <div class="proj-card">
-        <h3>Warehouse Management System (WMS) Redesign</h3>
-        <p>Redesigned a Warehouse Management System around real warehouse operator workflows, improving inbound, putaway, picking, packing, and dispatch processes through workflow-first product design.</p>
-        <div class="proj-meta"><span>WMS</span><span>Workflow Design</span><span>AI-assisted Operations</span></div>
-      </div>
+<section id="logistics">
+  <div class="sec-label scroll-reveal">Logistics & Warehouse Tech</div>
 
-      <div class="proj-card">
-        <h3>Unified Inventory Platform</h3>
-        <p>Designed a unified inventory platform enabling seamless inventory movement between fulfillment centers and quick commerce dark stores while improving inventory visibility, warehouse efficiency, and operational control.</p>
-        <div class="proj-meta"><span>Inventory Platform</span><span>Quick Commerce</span><span>Enterprise Product</span></div>
-      </div>
-
-      <div class="proj-card">
-        <h3>Client Operations Portal ⭐</h3>
-        <p>Designed a unified client-facing portal that provided customers with real-time operational visibility, onboarding, shipment tracking, billing insights, and a single interface to collaborate with internal teams.</p>
-        <div class="proj-more">
-          <p>The traditional client experience relied on multiple emails, spreadsheets, and calls across account management, operations, and support teams. I designed a single platform that consolidated operational visibility, onboarding progress, shipment information, billing, and service requests into one experience.</p>
-          <p>The platform also connected directly with internal teams by automatically assigning tasks, tracking ownership, and providing a structured escalation framework to improve transparency and reduce operational delays.</p>
-          <p>Instead of building multiple disconnected tools, the product unified customer interactions and internal workflows into a single operational control tower.</p>
-        </div>
-        <button class="read-more-btn" data-target="wms3">Read more ↓</button>
-        <div class="proj-meta"><span>Client Portal</span><span>Control Tower</span><span>B2B SaaS</span><span>Enterprise Platform</span></div>
-      </div>
-
-      <div class="proj-card">
-        <h3>Operations Visibility Dashboard</h3>
-        <p>Defined a real-time operations dashboard that replaced manual status updates with a single source of operational visibility for account managers.</p>
-        <div class="proj-meta"><span>Dashboard</span><span>Operations</span><span>Product Discovery</span></div>
-      </div>
-
-      <div class="proj-card">
-        <h3>Doorstep Returns Collection</h3>
-        <p>Led the design of a doorstep returns solution from concept to pilot, focusing on structured exception handling and operational trust.</p>
-        <div class="proj-meta"><span>0→1 Product</span><span>Returns</span><span>Pilot Launch</span></div>
-      </div>
-
-      <div class="proj-card">
-        <h3>Warehouse Label Printing Platform</h3>
-        <p>Designed a centralized label printing solution supporting multiple printer configurations, barcode standards, and warehouse workflows to improve printing accuracy and operational efficiency.</p>
-        <div class="proj-meta"><span>Warehouse Systems</span><span>Barcode</span><span>Printing Platform</span></div>
+  <div class="project scroll-reveal" data-delay="0">
+    <div>
+      <h3>Warehouse Management System (WMS) Redesign</h3>
+      <p>Redesigned a Warehouse Management System around real warehouse operator workflows, improving inbound, putaway, picking, packing, and dispatch processes through workflow-first product design.</p>
+      <div class="project-tags">
+        <span class="tag">WMS</span>
+        <span class="tag">Workflow Design</span>
+        <span class="tag">AI-assisted Operations</span>
       </div>
     </div>
   </div>
-</main>
+
+  <div class="project scroll-reveal" data-delay="50">
+    <div>
+      <h3>Unified Inventory Platform</h3>
+      <p>Designed a unified inventory platform enabling seamless inventory movement between fulfillment centers and quick commerce dark stores while improving inventory visibility, warehouse efficiency, and operational control.</p>
+      <div class="project-tags">
+        <span class="tag">Inventory Platform</span>
+        <span class="tag">Quick Commerce</span>
+        <span class="tag">Enterprise Product</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project scroll-reveal" data-delay="100">
+    <div>
+      <h3>Client Operations Portal ⭐</h3>
+      <p>Designed a unified client-facing portal that provided customers with real-time operational visibility, onboarding, shipment tracking, billing insights, and a single interface to collaborate with internal teams.</p>
+      <div class="proj-more">
+        <p>The traditional client experience relied on multiple emails, spreadsheets, and calls across account management, operations, and support teams. I designed a single platform that consolidated operational visibility, onboarding progress, shipment information, billing, and service requests into one experience.</p>
+        <p>The platform also connected directly with internal teams by automatically assigning tasks, tracking ownership, and providing a structured escalation framework to improve transparency and reduce operational delays.</p>
+        <p>Instead of building multiple disconnected tools, the product unified customer interactions and internal workflows into a single operational control tower.</p>
+      </div>
+      <button class="read-more-btn">Read more ↓</button>
+      <div class="project-tags">
+        <span class="tag">Client Portal</span>
+        <span class="tag">Control Tower</span>
+        <span class="tag">B2B SaaS</span>
+        <span class="tag">Enterprise Platform</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project scroll-reveal" data-delay="150">
+    <div>
+      <h3>Operations Visibility Dashboard</h3>
+      <p>Defined a real-time operations dashboard that replaced manual status updates with a single source of operational visibility for account managers.</p>
+      <div class="project-tags">
+        <span class="tag">Dashboard</span>
+        <span class="tag">Operations</span>
+        <span class="tag">Product Discovery</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project scroll-reveal" data-delay="200">
+    <div>
+      <h3>Doorstep Returns Collection</h3>
+      <p>Led the design of a doorstep returns solution from concept to pilot, focusing on structured exception handling and operational trust.</p>
+      <div class="project-tags">
+        <span class="tag">0→1 Product</span>
+        <span class="tag">Returns</span>
+        <span class="tag">Pilot Launch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project scroll-reveal" data-delay="250">
+    <div>
+      <h3>Warehouse Label Printing Platform</h3>
+      <p>Designed a centralized label printing solution supporting multiple printer configurations, barcode standards, and warehouse workflows to improve printing accuracy and operational efficiency.</p>
+      <div class="project-tags">
+        <span class="tag">Warehouse Systems</span>
+        <span class="tag">Barcode</span>
+        <span class="tag">Printing Platform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>© 2026 Vaibhav Rawat. Built with intention.</footer>
 
 <script>
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+let shootingStars = [];
+let staticStars = [];
+let density = 8;
+let speedMult = 1.8;
+let frame = 0;
+
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  W = canvas.width = window.innerWidth * dpr;
+  H = canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  W = window.innerWidth; H = window.innerHeight;
+  initStaticStars();
+}
+function initStaticStars() {
+  staticStars = [];
+  const count = Math.floor((W * H) / 1800);
+  for (let i = 0; i < count; i++) {
+    staticStars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      size: Math.random() * 1.2 + 0.3,
+      opacity: Math.random() * 0.6 + 0.2,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      twinkleOffset: Math.random() * Math.PI * 2
+    });
+  }
+}
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+}
+class ShootingStar {
+  constructor() { this.reset(); }
+  reset() {
+    const side = Math.floor(Math.random() * 4);
+    this.speed = (Math.random() * 3 + 2) * speedMult;
+    this.length = Math.random() * 80 + 40;
+    this.thickness = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.5 + 0.5;
+    this.decay = Math.random() * 0.015 + 0.008;
+    this.color = Math.random() > 0.7 ? '#c9a45c' : (Math.random() > 0.5 ? '#8b7df2' : '#ffffff');
+    if (side === 0) { this.x = Math.random() * W; this.y = -50; this.vx = (Math.random() - 0.5) * 2; this.vy = Math.abs(Math.random()) * this.speed + 1; }
+    else if (side === 1) { this.x = W + 50; this.y = Math.random() * H; this.vx = -(Math.abs(Math.random()) * this.speed + 1); this.vy = (Math.random() - 0.5) * 2; }
+    else if (side === 2) { this.x = Math.random() * W; this.y = H + 50; this.vx = (Math.random() - 0.5) * 2; this.vy = -(Math.abs(Math.random()) * this.speed + 1); }
+    else { this.x = -50; this.y = Math.random() * H; this.vx = Math.abs(Math.random()) * this.speed + 1; this.vy = (Math.random() - 0.5) * 2; }
+    if (Math.abs(this.vx) < 1) this.vx = this.vx > 0 ? 2 : -2;
+    if (Math.abs(this.vy) < 1) this.vy = this.vy > 0 ? 2 : -2;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    this.opacity -= this.decay;
+    if (this.opacity <= 0 || this.x < -100 || this.x > W + 100 || this.y < -100 || this.y > H + 100) {
+      this.opacity = 0; this.x = -999;
+    }
+  }
+  draw(ctx) {
+    if (this.opacity <= 0) return;
+    const tailX = this.x - this.vx * (this.length / this.speed);
+    const tailY = this.y - this.vy * (this.length / this.speed);
+    const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
+    grad.addColorStop(0, hexToRgba(this.color, 0));
+    grad.addColorStop(1, hexToRgba(this.color, this.opacity));
+    ctx.save();
+    ctx.beginPath(); ctx.moveTo(tailX, tailY); ctx.lineTo(this.x, this.y);
+    ctx.strokeStyle = grad; ctx.lineWidth = this.thickness; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.thickness * 4, 0, Math.PI * 2);
+    ctx.fillStyle = hexToRgba(this.color, this.opacity * 0.2); ctx.fill();
+    ctx.restore();
+  }
+}
+function spawnStars() {
+  const target = density * 2;
+  while (shootingStars.length < target) {
+    const s = new ShootingStar(); s.opacity = 0; s.x = -999; shootingStars.push(s);
+  }
+  if (shootingStars.length > target) shootingStars = shootingStars.slice(0, target);
+}
+function animateStars() {
+  frame++;
+  ctx.clearRect(0, 0, W, H);
+  for (const s of staticStars) {
+    const flicker = Math.sin(frame * s.twinkleSpeed + s.twinkleOffset) * 0.3 + 0.7;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,' + (s.opacity * flicker) + ')'; ctx.fill();
+    ctx.restore();
+  }
+  for (const s of shootingStars) {
+    if (s.opacity <= 0 && Math.random() < 0.04 * density) s.reset();
+    s.update(); s.draw(ctx);
+  }
+  requestAnimationFrame(animateStars);
+}
+resize(); spawnStars(); animateStars();
+window.addEventListener('resize', resize);
+
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const st = document.documentElement.scrollTop || document.body.scrollTop;
+  const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progress.style.width = (st / sh * 100) + '%';
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => entry.target.classList.add('revealed'), parseInt(delay));
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const duration = 1500;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+      }, 16);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
 document.querySelectorAll('.read-more-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const card = btn.closest('.proj-card');
+    const card = btn.closest('.project');
     const more = card.querySelector('.proj-more');
     const isOpen = more.classList.toggle('open');
     btn.textContent = isOpen ? 'Show less ↑' : 'Read more ↓';
   });
 });
 </script>
-
-<footer>
-  <div class="wrap foot-row">
-    <span>© 2026 Vaibhav Rawat</span>
-    <div class="foot-links">
-      <a href="mailto:hello@vaibhavbuilds.in">Email</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
-    </div>
-  </div>
-</footer>
 </body>
 </html>

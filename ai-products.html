@@ -4,261 +4,705 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Products — Vaibhav Rawat</title>
-<meta name="description" content="AI product concepts designed end-to-end, from problem to mechanism.">
+<meta name="description" content="AI Product Manager building intelligent systems for logistics — AI agents, n8n automations, and warehouse tech.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --amber:#E8590C;--ink-light:#F4F2FA;--ink-soft-light:#C9C4DA;
-    --glass:rgba(255,255,255,0.08);--glass-border:rgba(255,255,255,0.16);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;min-height:100vh;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
-    color:var(--ink-light);position:relative;
-    background:
-      radial-gradient(ellipse 900px 700px at 15% 10%, rgba(232,89,222,0.30), transparent 60%),
-      radial-gradient(ellipse 800px 700px at 90% 20%, rgba(29,146,235,0.26), transparent 60%),
-      radial-gradient(ellipse 900px 800px at 70% 75%, rgba(255,111,0,0.18), transparent 60%),
-      radial-gradient(ellipse 700px 600px at 30% 90%, rgba(124,58,237,0.26), transparent 60%),
-      radial-gradient(ellipse 600px 500px at 50% 50%, rgba(232,89,222,0.14), transparent 65%),
-      #0B0A1A;
-    background-attachment:fixed;
-  }
-  a{color:inherit;}
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;position:relative;z-index:2;}
-  @media (max-width:640px){.wrap{padding:0 20px;}}
-  .stars{
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:
-      radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 120px 80px, #fff, transparent),
-      radial-gradient(1px 1px at 200px 150px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
-      radial-gradient(1px 1px at 400px 200px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent),
-      radial-gradient(1px 1px at 60px 220px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 650px 60px, #fff, transparent),
-      radial-gradient(1px 1px at 800px 180px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 900px 90px, #fff, transparent),
-      radial-gradient(1px 1px at 150px 350px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 350px 320px, #fff, transparent),
-      radial-gradient(1px 1px at 550px 380px, #fff, transparent),
-      radial-gradient(1.5px 1.5px at 750px 340px, #fff, transparent),
-      radial-gradient(1px 1px at 950px 300px, #fff, transparent);
-    background-repeat:repeat;background-size:1000px 420px;opacity:.7;
-  }
-  header{position:sticky;top:0;z-index:50;background:rgba(11,10,26,0.55);backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;flex-wrap:wrap;gap:10px;}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:#fff;}
-  .nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0;flex-wrap:wrap;}
-  .nav a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft-light);transition:color .15s;}
-  .nav a:hover, .nav a:focus-visible{color:var(--amber);}
-  .nav a.active{color:#fff;}
+:root {
+  --bg: #07070a;
+  --surface: #0f0f13;
+  --surface-raised: #14141a;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.16);
+  --text-p: #f0f0f2;
+  --text-s: #9a9aa2;
+  --text-t: #5e5e66;
+  --accent: #c9a45c;
+  --accent-dim: rgba(201,164,92,0.10);
+  --accent-glow: rgba(201,164,92,0.22);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.7s;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-p);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
 
-  main{padding:80px 0 100px;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.08em;color:#D9C9FF;
-    background:var(--glass);border:1px solid var(--glass-border);padding:6px 12px;border-radius:100px;margin-bottom:24px;
-  }
-  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
-  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 20px;color:#fff;max-width:820px;}
-  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft-light);max-width:680px;margin:0 0 40px;}
+#starCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 100; width: 0%; box-shadow: 0 0 10px var(--accent-glow); }
 
-  .prod-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;}
-  @media (max-width:900px){.prod-grid{grid-template-columns:repeat(2, 1fr);}}
-  @media (max-width:640px){.prod-grid{grid-template-columns:1fr;}}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-size: 15px; font-weight: 500; letter-spacing: 0.04em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a {
+  font-size: 14px; color: var(--text-s); position: relative; transition: color 0.3s var(--ease);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+  background: var(--accent); transition: width 0.4s var(--ease);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text-p); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  font-size: 13px; font-weight: 500; padding: 8px 18px;
+  background: var(--accent); color: var(--bg); border-radius: var(--radius-sm); transition: all 0.3s var(--ease);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
 
-  .prod-card{
-    background:rgba(244,242,250,0.95);border:1px solid rgba(255,255,255,0.4);border-radius:14px;
-    padding:24px;box-shadow:0 16px 40px rgba(0,0,0,0.22);color:#171A1C;
-    display:flex;flex-direction:column;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .prod-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,0.28);}
-  .prod-status{
-    display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.05em;color:#8A5A00;
-    background:#FFE9C7;padding:3px 9px;border-radius:100px;margin-bottom:12px;align-self:flex-start;
-  }
-  .prod-card h3{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 8px;line-height:1.3;}
-  .prod-card p{color:#4B5259;font-size:13.5px;line-height:1.6;margin:0 0 16px;flex:1;
-    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-  .prod-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-  .prod-tags span{font-size:10.5px;font-weight:500;color:#171A1C;background:#EDEAF7;border:1px solid #DCD6EE;padding:3px 9px;border-radius:100px;}
-  .prod-open{font-size:12.5px;font-weight:600;color:var(--amber);margin-top:auto;}
+section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px; margin: 0 auto; }
+.sec-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent); margin-bottom: 16px;
+  opacity: 0; transform: translateY(12px); transition: all var(--dur) var(--ease);
+}
+.sec-label.revealed { opacity: 1; transform: translateY(0); }
 
-  .modal-overlay{
-    display:none;position:fixed;inset:0;z-index:100;
-    background:rgba(11,10,26,0.75);backdrop-filter:blur(4px);
-    align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
-  }
-  .modal-overlay.open{display:flex;}
-  .modal-box{
-    background:#F4F2FA;color:#171A1C;border-radius:16px;max-width:640px;width:100%;
-    padding:36px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.4);margin-bottom:40px;
-  }
-  .modal-close{
-    position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;
-    cursor:pointer;color:#4B5259;line-height:1;padding:4px;
-  }
-  .modal-close:hover{color:#171A1C;}
-  .modal-status{
-    display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;color:#8A5A00;
-    background:#FFE9C7;padding:4px 10px;border-radius:100px;margin-bottom:12px;
-  }
-  .modal-box h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:0 0 20px;padding-right:24px;}
-  .modal-section{margin-bottom:22px;}
-  .modal-section h4{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--amber);margin:0 0 8px;}
-  .modal-section p{color:#3A3F47;font-size:14.5px;line-height:1.65;margin:0;}
-  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag-list span{font-size:12px;font-weight:500;color:#171A1C;background:#EDEAF7;border:1px solid #DCD6EE;padding:5px 11px;border-radius:100px;}
-  .roadmap-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
-  .roadmap-list li{font-size:13.5px;display:flex;align-items:center;gap:8px;}
-  .rm-done{color:#1a7f37;font-weight:600;}
-  .rm-pending{color:#8A8FA3;}
+.hero { padding-top: 140px; padding-bottom: 100px; }
+.hero h1 {
+  font-size: clamp(36px, 6vw, 56px); font-weight: 500; line-height: 1.08;
+  letter-spacing: -0.02em; margin-bottom: 20px;
+  opacity: 0; transform: translateY(30px); transition: all 0.9s var(--ease) 0.1s;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 18px; line-height: 1.6; color: var(--text-s); max-width: 520px; margin-bottom: 32px;
+  opacity: 0; transform: translateY(20px); transition: all 0.9s var(--ease) 0.25s;
+}
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(16px); transition: all 0.9s var(--ease) 0.4s;
+}
+.hero.revealed h1, .hero.revealed p, .hero.revealed .hero-btns { opacity: 1; transform: translateY(0); }
 
-  footer{padding:40px 0;border-top:1px solid var(--glass-border);margin-top:60px;}
-  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-soft-light);}
-  .foot-links{display:flex;gap:20px;}
-  .foot-links a{text-decoration:none;color:var(--ink-soft-light);}
-  .foot-links a:hover{color:var(--amber);}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+.btn-primary {
+  font-size: 14px; font-weight: 500; padding: 14px 28px;
+  background: var(--accent); color: var(--bg); border-radius: var(--radius-sm); display: inline-block;
+  transition: all 0.3s var(--ease);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px var(--accent-glow); }
+.btn-ghost {
+  font-size: 14px; font-weight: 500; padding: 14px 28px;
+  background: transparent; color: var(--text-p); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); display: inline-block; transition: all 0.3s var(--ease);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
+  transition: all 0.4s var(--ease); opacity: 0; transform: translateY(40px);
+}
+.card.revealed { opacity: 1; transform: translateY(0); }
+.card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.card-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--accent-dim); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+.card p { font-size: 14px; line-height: 1.55; color: var(--text-s); }
+
+.project {
+  display: grid; grid-template-columns: 1fr 180px; gap: 32px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 32px; margin-bottom: 16px; transition: all 0.4s var(--ease);
+  opacity: 0; transform: translateY(40px); position: relative; overflow: hidden;
+}
+.project.revealed { opacity: 1; transform: translateY(0); }
+.project::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--accent); opacity: 0; transition: opacity 0.4s var(--ease);
+}
+.project:hover::before { opacity: 1; }
+.project:hover { border-color: var(--border-hover); transform: translateX(4px); }
+.project h3 { font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+.project-meta { font-size: 12px; color: var(--text-t); margin-bottom: 12px; }
+.project p { font-size: 15px; line-height: 1.6; color: var(--text-s); margin-bottom: 16px; }
+.project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px; padding: 5px 12px; border-radius: 6px;
+  background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);
+}
+.project-stats {
+  display: flex; flex-direction: column; gap: 16px;
+  border-left: 1px solid var(--border); padding-left: 24px;
+}
+.stat-num { font-size: 28px; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 12px; color: var(--text-t); margin-top: 2px; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: all 0.3s var(--ease); opacity: 0; transform: translateY(24px);
+}
+.contact-item.revealed { opacity: 1; transform: translateY(0); }
+.contact-item:hover { border-color: var(--accent); background: var(--surface-raised); }
+.contact-item svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
+.contact-item span { font-size: 14px; font-weight: 500; }
+.contact-sub { font-size: 12px; color: var(--text-t); margin-top: 2px; font-weight: 400; }
+
+footer {
+  position: relative; z-index: 1; text-align: center; padding: 40px 24px;
+  border-top: 1px solid var(--border); color: var(--text-t); font-size: 13px;
+}
+
+.read-more-btn {
+  background: none; border: none; padding: 0; margin-top: 4px;
+  font-size: 13px; font-weight: 600; color: var(--accent); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.read-more-btn:hover { text-decoration: underline; }
+.proj-more { display: none; margin-top: 12px; }
+.proj-more.open { display: block; }
+.proj-more p { font-size: 14px; color: var(--text-s); line-height: 1.65; margin-bottom: 10px; }
+
+@media (max-width: 640px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .project { grid-template-columns: 1fr; }
+  .project-stats { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 20px; flex-direction: row; gap: 24px; }
+  .nav-links { gap: 16px; }
+  .nav-cta { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  section { padding: 80px 20px; }
+  .hero { padding-top: 120px; }
+}
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"></div>
+<canvas id="starCanvas"></canvas>
+<div class="progress" id="progress"></div>
 
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="brand">Vaibhav Rawat</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+<nav>
+  <a href="index.html" class="logo">vaibhav<span>.</span>builds</a>
+  <div class="nav-links">
+    <a href="index.html" class="">Home</a>
+    <a href="about.html" class="">About</a>
+    <a href="projects.html" class="">Projects</a>
+    <a href="ai-products.html" class="active">AI Products</a>
+    <a href="automations.html" class="">Automations</a>
+    <a href="contact.html" class="nav-cta">Let's talk</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="wrap">
-    <span class="eyebrow mono"><span class="dot"></span>AI–PM</span>
-    <h1>AI Product Concepts</h1>
-    <p class="lede">Self-directed product work — each one taken from problem to a working mechanism. Click any card for the full breakdown.</p>
 
-    <div class="prod-grid" id="prodGrid"></div>
+<section class="hero scroll-reveal">
+  <div class="sec-label" style="color: var(--text-t); margin-bottom: 20px;">AI–PM</div>
+  <h1>AI Product Concepts</h1>
+  <p>Self-directed product work — each one taken from problem to a working mechanism. Click any card for the full breakdown.</p>
+</section>
+
+<section>
+  <div class="grid-2">
+    
+    <div class="card scroll-reveal" data-delay="0" style="cursor: pointer;" onclick="openModal(0)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI Personal Agent for G-Suite & WhatsApp</h3>
+      <p>Professionals run their day across five disconnected surfaces — inbox, calendar, docs, tasks, WhatsApp — and spend more time context-switching between them than acting.</p>
+      <div style="margin-top: 12px;"><span class="tag">Gemini/OpenAI</span><span class="tag">n8n</span><span class="tag">Gmail API</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="50" style="cursor: pointer;" onclick="openModal(1)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI Personal Lifestyle Agent</h3>
+      <p>Fitness, budgeting, travel planning, and habit tracking each live in a separate app, so no single system actually knows the user well enough to help proactively.</p>
+      <div style="margin-top: 12px;"><span class="tag">OpenAI</span><span class="tag">n8n</span><span class="tag">Health APIs</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="100" style="cursor: pointer;" onclick="openModal(2)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>OSRM Route Optimization for Quick Commerce Riders</h3>
+      <p>Standard navigation optimizes for shortest distance to one destination — it has no concept of multi-order sequencing, rider capacity, or delivery priority.</p>
+      <div style="margin-top: 12px;"><span class="tag">OSRM</span><span class="tag">OpenStreetMap</span><span class="tag">n8n</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="150" style="cursor: pointer;" onclick="openModal(3)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI Customer Support Agent</h3>
+      <p>Support teams burn hours answering the same handful of questions on repeat, which delays response time on the cases that actually need a human.</p>
+      <div style="margin-top: 12px;"><span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">Vector DB</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="200" style="cursor: pointer;" onclick="openModal(4)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI NPS & Customer Feedback Analyzer</h3>
+      <p>Feedback arrives scattered across surveys, app reviews, and support tickets — nobody reads all of it, so recurring issues get missed until they're already a pattern.</p>
+      <div style="margin-top: 12px;"><span class="tag">OpenAI</span><span class="tag">NLP</span><span class="tag">Power BI</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="250" style="cursor: pointer;" onclick="openModal(5)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI Resume & Job Fit Analyzer</h3>
+      <p>Candidates get rejected by an ATS before a human ever reads their resume, with zero visibility into why.</p>
+      <div style="margin-top: 12px;"><span class="tag">OpenAI</span><span class="tag">Embeddings</span><span class="tag">n8n</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
+
+    <div class="card scroll-reveal" data-delay="300" style="cursor: pointer;" onclick="openModal(6)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+        <span class="tag" style="background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,164,92,0.15);">Prototype</span>
+      </div>
+      <h3>AI Lead Enrichment Tool</h3>
+      <p>Reps lose real selling time to manual research — company background, decision-makers, context — before every single outreach.</p>
+      <div style="margin-top: 12px;"><span class="tag">OpenAI</span><span class="tag">LinkedIn APIs</span><span class="tag">n8n</span></div>
+      <div style="margin-top: 16px; font-size: 13px; font-weight: 500; color: var(--accent);">View full breakdown →</div>
+    </div>
+    
   </div>
-</main>
+</section>
 
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose">&times;</button>
-    <div id="modalStatus" class="modal-status"></div>
-    <h2 id="modalTitle"></h2>
+<!-- Modal -->
+<div id="modalOverlay" style="display: none; position: fixed; inset: 0; z-index: 100; background: rgba(7,7,10,0.85); backdrop-filter: blur(8px); align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto;" onclick="if(event.target===this)closeModal()">
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); max-width: 640px; width: 100%; padding: 36px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.5); margin-bottom: 40px; color: var(--text-p);">
+    <button onclick="closeModal()" style="position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-s); line-height: 1; padding: 4px;">&times;</button>
+    <div id="modalBody">
+      
+    <div class="modal-content" id="modal-0" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI Personal Agent for G-Suite & WhatsApp</h2>
 
-    <div class="modal-section">
-      <h4>Problem</h4>
-      <p id="modalProblem"></p>
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Professionals run their day across five disconnected surfaces — inbox, calendar, docs, tasks, WhatsApp — and spend more time context-switching between them than acting.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">A conversational agent, reachable entirely through WhatsApp, that reads intent from a message, routes it to the right Google API (Gmail, Calendar, Drive), executes the action, and replies in plain language — no app-switching required.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Intent detection → API call → LLM-formatted response, with the agent holding enough context to handle a full back-and-forth, not just single commands.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Email summarization</span><span class="tag">Smart reply generation</span><span class="tag">Calendar management</span><span class="tag">WhatsApp assistant</span><span class="tag">Meeting scheduling</span><span class="tag">Daily briefings</span><span class="tag">Reminder automation</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Product discovery</span><span class="tag">Workflow design</span><span class="tag">AI agent planning</span><span class="tag">API integration strategy</span><span class="tag">Feature prioritization</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Gmail integration</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Calendar automation</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Google Drive search</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Voice assistant</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Multi-agent collaboration</li></ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h4>Solution</h4>
-      <p id="modalSolution"></p>
+    
+    <div class="modal-content" id="modal-1" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI Personal Lifestyle Agent</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Fitness, budgeting, travel planning, and habit tracking each live in a separate app, so no single system actually knows the user well enough to help proactively.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">One assistant with persistent memory of the user's goals and patterns, generating recommendations and nudges on its own rather than waiting to be asked.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Goal input → behavior/activity analysis → recommendation engine → proactive notification — the loop runs continuously, not on-demand.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Fitness tracking</span><span class="tag">Meal planning</span><span class="tag">Expense monitoring</span><span class="tag">Habit tracking</span><span class="tag">Travel planning</span><span class="tag">Smart reminders</span><span class="tag">Goal progress</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Product vision</span><span class="tag">User persona definition</span><span class="tag">Feature roadmap</span><span class="tag">AI experience design</span><span class="tag">MVP planning</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Lifestyle dashboard</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Smart recommendations</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Wearable integration</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Voice assistant</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Family profiles</li></ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h4>Mechanism</h4>
-      <p id="modalMechanism"></p>
+    
+    <div class="modal-content" id="modal-2" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">OSRM Route Optimization for Quick Commerce Riders</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Standard navigation optimizes for shortest distance to one destination — it has no concept of multi-order sequencing, rider capacity, or delivery priority.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">A routing engine purpose-built for quick commerce: sequences multiple stops by priority and capacity, not just proximity.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Built on OSRM + OpenStreetMap rather than a metered maps API — routing and ETA calculation run on open map data, so traffic-aware ETA estimation doesn't incur a per-call cost the way a commercial maps API would at delivery-fleet volume.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Multi-stop optimization</span><span class="tag">ETA prediction</span><span class="tag">Route sequencing</span><span class="tag">Distance matrix</span><span class="tag">Rider assignment</span><span class="tag">Delivery prioritization</span><span class="tag">Map visualization</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Product strategy</span><span class="tag">Routing logic design</span><span class="tag">Workflow definition</span><span class="tag">API planning</span><span class="tag">Operations research</span><span class="tag">KPI definition</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Route optimization</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> ETA engine</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Live traffic integration</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Fleet analytics</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> AI route learning</li></ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h4>Key Features</h4>
-      <div class="tag-list" id="modalFeatures"></div>
+    
+    <div class="modal-content" id="modal-3" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI Customer Support Agent</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Support teams burn hours answering the same handful of questions on repeat, which delays response time on the cases that actually need a human.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">An agent that answers directly from a knowledge base and escalates automatically the moment its confidence drops below a threshold — so humans only see what genuinely needs them.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Query → vector search against knowledge base → LLM response → confidence check → auto-escalate or reply.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">AI chat support</span><span class="tag">Knowledge base search</span><span class="tag">Ticket categorization</span><span class="tag">Smart escalation</span><span class="tag">Conversation history</span><span class="tag">Multi-language support</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Customer journey mapping</span><span class="tag">Product discovery</span><span class="tag">AI workflow design</span><span class="tag">Prompt strategy</span><span class="tag">Feature planning</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> AI chat</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Knowledge search</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> CRM integration</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Voice support</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Agent analytics</li></ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h4>My Role</h4>
-      <div class="tag-list" id="modalRole"></div>
+    
+    <div class="modal-content" id="modal-4" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI NPS & Customer Feedback Analyzer</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Feedback arrives scattered across surveys, app reviews, and support tickets — nobody reads all of it, so recurring issues get missed until they're already a pattern.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Every feedback source feeds one pipeline that scores sentiment, clusters recurring themes, and ranks them by frequency — turning raw text into a prioritized action list.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Feedback ingestion → sentiment scoring → topic clustering → ranked dashboard.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Sentiment analysis</span><span class="tag">Theme detection</span><span class="tag">NPS dashboard</span><span class="tag">Trend analysis</span><span class="tag">AI recommendations</span><span class="tag">Executive reports</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">KPI definition</span><span class="tag">Product discovery</span><span class="tag">Dashboard planning</span><span class="tag">AI workflow design</span><span class="tag">Prioritization</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Sentiment analysis</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Dashboard</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Live integrations</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Competitor benchmarking</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Predictive churn</li></ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h4>Roadmap</h4>
-      <ul class="roadmap-list" id="modalRoadmap"></ul>
+    
+    <div class="modal-content" id="modal-5" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI Resume & Job Fit Analyzer</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Candidates get rejected by an ATS before a human ever reads their resume, with zero visibility into why.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Scores a resume directly against a specific job description before submission — surfaces missing keywords and skill gaps, then rewrites the weak sections.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Resume + JD → embedding-based similarity scoring → gap analysis → targeted rewrite suggestions.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Resume parsing</span><span class="tag">ATS score</span><span class="tag">Skill gap analysis</span><span class="tag">Keyword suggestions</span><span class="tag">Resume rewrite</span><span class="tag">Export report</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Product discovery</span><span class="tag">PRD creation</span><span class="tag">AI workflow design</span><span class="tag">UX planning</span><span class="tag">Feature prioritization</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> ATS analysis</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> AI suggestions</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Interview preparation</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Cover letter generator</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Job recommendations</li></ul>
+      </div>
+    </div>
+    
+    <div class="modal-content" id="modal-6" style="display: none;">
+      <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(201,164,92,0.15); padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;">Prototype</div>
+      <h2 style="font-size: 24px; font-weight: 500; margin-bottom: 20px;">AI Lead Enrichment Tool</h2>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Problem</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Reps lose real selling time to manual research — company background, decision-makers, context — before every single outreach.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Solution</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Automates that research end-to-end and writes the enriched profile straight into the CRM, so the rep opens a ready-to-use lead instead of a blank one.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Mechanism</h4>
+        <p style="font-size: 15px; color: var(--text-s); line-height: 1.6;">Lead input → company/contact enrichment → AI-generated summary → CRM write-back.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Key Features</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Company research</span><span class="tag">Contact enrichment</span><span class="tag">AI lead summary</span><span class="tag">CRM integration</span><span class="tag">Personalized outreach</span><span class="tag">Lead scoring</span></div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">My Role</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="tag">Product strategy</span><span class="tag">User research</span><span class="tag">Feature definition</span><span class="tag">Workflow design</span><span class="tag">Integration planning</span></div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px;">Roadmap</h4>
+        <ul style="list-style: none; padding: 0;"><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> Lead research</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--accent); font-weight: 600;">✓</span> AI summaries</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Email personalization</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Sales analytics</li><li style="font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-t); font-weight: 600;">◻</span> Automated outreach</li></ul>
+      </div>
+    </div>
+    
     </div>
   </div>
 </div>
 
-<footer>
-  <div class="wrap foot-row">
-    <span>© 2026 Vaibhav Rawat</span>
-    <div class="foot-links">
-      <a href="mailto:hello@vaibhavbuilds.in">Email</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
-    </div>
-  </div>
-</footer>
+
+<footer>© 2026 Vaibhav Rawat. Built with intention.</footer>
 
 <script>
-const products = [{"name": "AI Personal Agent for G-Suite & WhatsApp", "status": "Prototype", "tags": ["Gemini/OpenAI", "n8n", "Gmail API", "Calendar API", "WhatsApp"], "problem": "Professionals run their day across five disconnected surfaces \u2014 inbox, calendar, docs, tasks, WhatsApp \u2014 and spend more time context-switching between them than acting.", "solution": "A conversational agent, reachable entirely through WhatsApp, that reads intent from a message, routes it to the right Google API (Gmail, Calendar, Drive), executes the action, and replies in plain language \u2014 no app-switching required.", "mechanism": "Intent detection \u2192 API call \u2192 LLM-formatted response, with the agent holding enough context to handle a full back-and-forth, not just single commands.", "features": ["Email summarization", "Smart reply generation", "Calendar management", "WhatsApp assistant", "Meeting scheduling", "Daily briefings", "Reminder automation"], "role": ["Product discovery", "Workflow design", "AI agent planning", "API integration strategy", "Feature prioritization"], "roadmap": [["Gmail integration", true], ["Calendar automation", true], ["Google Drive search", false], ["Voice assistant", false], ["Multi-agent collaboration", false]]}, {"name": "AI Personal Lifestyle Agent", "status": "Prototype", "tags": ["OpenAI", "n8n", "Health APIs", "Finance APIs"], "problem": "Fitness, budgeting, travel planning, and habit tracking each live in a separate app, so no single system actually knows the user well enough to help proactively.", "solution": "One assistant with persistent memory of the user's goals and patterns, generating recommendations and nudges on its own rather than waiting to be asked.", "mechanism": "Goal input \u2192 behavior/activity analysis \u2192 recommendation engine \u2192 proactive notification \u2014 the loop runs continuously, not on-demand.", "features": ["Fitness tracking", "Meal planning", "Expense monitoring", "Habit tracking", "Travel planning", "Smart reminders", "Goal progress"], "role": ["Product vision", "User persona definition", "Feature roadmap", "AI experience design", "MVP planning"], "roadmap": [["Lifestyle dashboard", true], ["Smart recommendations", true], ["Wearable integration", false], ["Voice assistant", false], ["Family profiles", false]]}, {"name": "OSRM Route Optimization for Quick Commerce Riders", "status": "Prototype", "tags": ["OSRM", "OpenStreetMap", "n8n", "Python"], "problem": "Standard navigation optimizes for shortest distance to one destination \u2014 it has no concept of multi-order sequencing, rider capacity, or delivery priority.", "solution": "A routing engine purpose-built for quick commerce: sequences multiple stops by priority and capacity, not just proximity.", "mechanism": "Built on OSRM + OpenStreetMap rather than a metered maps API \u2014 routing and ETA calculation run on open map data, so traffic-aware ETA estimation doesn't incur a per-call cost the way a commercial maps API would at delivery-fleet volume.", "features": ["Multi-stop optimization", "ETA prediction", "Route sequencing", "Distance matrix", "Rider assignment", "Delivery prioritization", "Map visualization"], "role": ["Product strategy", "Routing logic design", "Workflow definition", "API planning", "Operations research", "KPI definition"], "roadmap": [["Route optimization", true], ["ETA engine", true], ["Live traffic integration", false], ["Fleet analytics", false], ["AI route learning", false]]}, {"name": "AI Customer Support Agent", "status": "Prototype", "tags": ["OpenAI", "RAG", "Vector DB", "n8n"], "problem": "Support teams burn hours answering the same handful of questions on repeat, which delays response time on the cases that actually need a human.", "solution": "An agent that answers directly from a knowledge base and escalates automatically the moment its confidence drops below a threshold \u2014 so humans only see what genuinely needs them.", "mechanism": "Query \u2192 vector search against knowledge base \u2192 LLM response \u2192 confidence check \u2192 auto-escalate or reply.", "features": ["AI chat support", "Knowledge base search", "Ticket categorization", "Smart escalation", "Conversation history", "Multi-language support"], "role": ["Customer journey mapping", "Product discovery", "AI workflow design", "Prompt strategy", "Feature planning"], "roadmap": [["AI chat", true], ["Knowledge search", true], ["CRM integration", false], ["Voice support", false], ["Agent analytics", false]]}, {"name": "AI NPS & Customer Feedback Analyzer", "status": "Prototype", "tags": ["OpenAI", "NLP", "Power BI"], "problem": "Feedback arrives scattered across surveys, app reviews, and support tickets \u2014 nobody reads all of it, so recurring issues get missed until they're already a pattern.", "solution": "Every feedback source feeds one pipeline that scores sentiment, clusters recurring themes, and ranks them by frequency \u2014 turning raw text into a prioritized action list.", "mechanism": "Feedback ingestion \u2192 sentiment scoring \u2192 topic clustering \u2192 ranked dashboard.", "features": ["Sentiment analysis", "Theme detection", "NPS dashboard", "Trend analysis", "AI recommendations", "Executive reports"], "role": ["KPI definition", "Product discovery", "Dashboard planning", "AI workflow design", "Prioritization"], "roadmap": [["Sentiment analysis", true], ["Dashboard", true], ["Live integrations", false], ["Competitor benchmarking", false], ["Predictive churn", false]]}, {"name": "AI Resume & Job Fit Analyzer", "status": "Prototype", "tags": ["OpenAI", "Embeddings", "n8n"], "problem": "Candidates get rejected by an ATS before a human ever reads their resume, with zero visibility into why.", "solution": "Scores a resume directly against a specific job description before submission \u2014 surfaces missing keywords and skill gaps, then rewrites the weak sections.", "mechanism": "Resume + JD \u2192 embedding-based similarity scoring \u2192 gap analysis \u2192 targeted rewrite suggestions.", "features": ["Resume parsing", "ATS score", "Skill gap analysis", "Keyword suggestions", "Resume rewrite", "Export report"], "role": ["Product discovery", "PRD creation", "AI workflow design", "UX planning", "Feature prioritization"], "roadmap": [["ATS analysis", true], ["AI suggestions", true], ["Interview preparation", false], ["Cover letter generator", false], ["Job recommendations", false]]}, {"name": "AI Lead Enrichment Tool", "status": "Prototype", "tags": ["OpenAI", "LinkedIn APIs", "n8n", "CRM"], "problem": "Reps lose real selling time to manual research \u2014 company background, decision-makers, context \u2014 before every single outreach.", "solution": "Automates that research end-to-end and writes the enriched profile straight into the CRM, so the rep opens a ready-to-use lead instead of a blank one.", "mechanism": "Lead input \u2192 company/contact enrichment \u2192 AI-generated summary \u2192 CRM write-back.", "features": ["Company research", "Contact enrichment", "AI lead summary", "CRM integration", "Personalized outreach", "Lead scoring"], "role": ["Product strategy", "User research", "Feature definition", "Workflow design", "Integration planning"], "roadmap": [["Lead research", true], ["AI summaries", true], ["Email personalization", false], ["Sales analytics", false], ["Automated outreach", false]]}];
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+let shootingStars = [];
+let staticStars = [];
+let density = 8;
+let speedMult = 1.8;
+let frame = 0;
 
-function escapeHtml(str){
-  return (str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  W = canvas.width = window.innerWidth * dpr;
+  H = canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  W = window.innerWidth; H = window.innerHeight;
+  initStaticStars();
 }
-
-const grid = document.getElementById('prodGrid');
-
-function cardHtml(item, i){
-  const tags = item.tags.slice(0,3).map(t => `<span>${escapeHtml(t)}</span>`).join('');
-  return `
-    <div class="prod-card" data-idx="${i}">
-      <span class="prod-status">${escapeHtml(item.status)}</span>
-      <h3>${escapeHtml(item.name)}</h3>
-      <p>${escapeHtml(item.problem)}</p>
-      <div class="prod-tags">${tags}</div>
-      <span class="prod-open">View full breakdown →</span>
-    </div>
-  `;
+function initStaticStars() {
+  staticStars = [];
+  const count = Math.floor((W * H) / 1800);
+  for (let i = 0; i < count; i++) {
+    staticStars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      size: Math.random() * 1.2 + 0.3,
+      opacity: Math.random() * 0.6 + 0.2,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      twinkleOffset: Math.random() * Math.PI * 2
+    });
+  }
 }
-
-grid.innerHTML = products.map((p, i) => cardHtml(p, i)).join('');
-
-const modalOverlay = document.getElementById('modalOverlay');
-const modalClose = document.getElementById('modalClose');
-const modalStatus = document.getElementById('modalStatus');
-const modalTitle = document.getElementById('modalTitle');
-const modalProblem = document.getElementById('modalProblem');
-const modalSolution = document.getElementById('modalSolution');
-const modalMechanism = document.getElementById('modalMechanism');
-const modalFeatures = document.getElementById('modalFeatures');
-const modalRole = document.getElementById('modalRole');
-const modalRoadmap = document.getElementById('modalRoadmap');
-
-function openModal(item){
-  modalStatus.textContent = item.status;
-  modalTitle.textContent = item.name;
-  modalProblem.textContent = item.problem;
-  modalSolution.textContent = item.solution;
-  modalMechanism.textContent = item.mechanism;
-  modalFeatures.innerHTML = item.features.map(f => `<span>${escapeHtml(f)}</span>`).join('');
-  modalRole.innerHTML = item.role.map(r => `<span>${escapeHtml(r)}</span>`).join('');
-  modalRoadmap.innerHTML = item.roadmap.map(([label, done]) =>
-    `<li><span class="${done ? 'rm-done' : 'rm-pending'}">${done ? '✓' : '◻'}</span> ${escapeHtml(label)}</li>`
-  ).join('');
-  modalOverlay.classList.add('open');
-  window.scrollTo({top:0, behavior:'instant'});
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
 }
-
-function closeModal(){
-  modalOverlay.classList.remove('open');
+class ShootingStar {
+  constructor() { this.reset(); }
+  reset() {
+    const side = Math.floor(Math.random() * 4);
+    this.speed = (Math.random() * 3 + 2) * speedMult;
+    this.length = Math.random() * 80 + 40;
+    this.thickness = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.5 + 0.5;
+    this.decay = Math.random() * 0.015 + 0.008;
+    this.color = Math.random() > 0.7 ? '#c9a45c' : (Math.random() > 0.5 ? '#8b7df2' : '#ffffff');
+    if (side === 0) { this.x = Math.random() * W; this.y = -50; this.vx = (Math.random() - 0.5) * 2; this.vy = Math.abs(Math.random()) * this.speed + 1; }
+    else if (side === 1) { this.x = W + 50; this.y = Math.random() * H; this.vx = -(Math.abs(Math.random()) * this.speed + 1); this.vy = (Math.random() - 0.5) * 2; }
+    else if (side === 2) { this.x = Math.random() * W; this.y = H + 50; this.vx = (Math.random() - 0.5) * 2; this.vy = -(Math.abs(Math.random()) * this.speed + 1); }
+    else { this.x = -50; this.y = Math.random() * H; this.vx = Math.abs(Math.random()) * this.speed + 1; this.vy = (Math.random() - 0.5) * 2; }
+    if (Math.abs(this.vx) < 1) this.vx = this.vx > 0 ? 2 : -2;
+    if (Math.abs(this.vy) < 1) this.vy = this.vy > 0 ? 2 : -2;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    this.opacity -= this.decay;
+    if (this.opacity <= 0 || this.x < -100 || this.x > W + 100 || this.y < -100 || this.y > H + 100) {
+      this.opacity = 0; this.x = -999;
+    }
+  }
+  draw(ctx) {
+    if (this.opacity <= 0) return;
+    const tailX = this.x - this.vx * (this.length / this.speed);
+    const tailY = this.y - this.vy * (this.length / this.speed);
+    const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
+    grad.addColorStop(0, hexToRgba(this.color, 0));
+    grad.addColorStop(1, hexToRgba(this.color, this.opacity));
+    ctx.save();
+    ctx.beginPath(); ctx.moveTo(tailX, tailY); ctx.lineTo(this.x, this.y);
+    ctx.strokeStyle = grad; ctx.lineWidth = this.thickness; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.thickness * 4, 0, Math.PI * 2);
+    ctx.fillStyle = hexToRgba(this.color, this.opacity * 0.2); ctx.fill();
+    ctx.restore();
+  }
 }
+function spawnStars() {
+  const target = density * 2;
+  while (shootingStars.length < target) {
+    const s = new ShootingStar(); s.opacity = 0; s.x = -999; shootingStars.push(s);
+  }
+  if (shootingStars.length > target) shootingStars = shootingStars.slice(0, target);
+}
+function animateStars() {
+  frame++;
+  ctx.clearRect(0, 0, W, H);
+  for (const s of staticStars) {
+    const flicker = Math.sin(frame * s.twinkleSpeed + s.twinkleOffset) * 0.3 + 0.7;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,' + (s.opacity * flicker) + ')'; ctx.fill();
+    ctx.restore();
+  }
+  for (const s of shootingStars) {
+    if (s.opacity <= 0 && Math.random() < 0.04 * density) s.reset();
+    s.update(); s.draw(ctx);
+  }
+  requestAnimationFrame(animateStars);
+}
+resize(); spawnStars(); animateStars();
+window.addEventListener('resize', resize);
 
-grid.querySelectorAll('.prod-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const i = parseInt(card.getAttribute('data-idx'), 10);
-    openModal(products[i]);
-  });
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const st = document.documentElement.scrollTop || document.body.scrollTop;
+  const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progress.style.width = (st / sh * 100) + '%';
 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => entry.target.classList.add('revealed'), parseInt(delay));
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const duration = 1500;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+      }, 16);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+function openModal(idx) {
+  document.querySelectorAll('.modal-content').forEach(el => el.style.display = 'none');
+  document.getElementById('modal-' + idx).style.display = 'block';
+  document.getElementById('modalOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
 </script>
 </body>
