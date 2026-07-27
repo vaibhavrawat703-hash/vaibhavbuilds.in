@@ -75,9 +75,11 @@ section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px;
 .sec-label {
   font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em;
   color: var(--accent); margin-bottom: 16px;
+}
+.sec-label.scroll-reveal {
   opacity: 0; transform: translateY(12px); transition: all var(--dur) var(--ease);
 }
-.sec-label.revealed { opacity: 1; transform: translateY(0); }
+.sec-label.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
 
 .hero { padding-top: 140px; padding-bottom: 100px; }
 .hero h1 {
@@ -113,9 +115,12 @@ section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px;
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
-  transition: all 0.4s var(--ease); opacity: 0; transform: translateY(40px);
+  transition: all 0.4s var(--ease);
 }
-.card.revealed { opacity: 1; transform: translateY(0); }
+.card.scroll-reveal {
+  opacity: 0; transform: translateY(40px);
+}
+.card.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
 .card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
 .card-icon {
   width: 44px; height: 44px; border-radius: 12px; background: var(--accent-dim); color: var(--accent);
@@ -128,9 +133,12 @@ section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px;
   display: grid; grid-template-columns: 1fr 180px; gap: 32px;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 32px; margin-bottom: 16px; transition: all 0.4s var(--ease);
-  opacity: 0; transform: translateY(40px); position: relative; overflow: hidden;
+  position: relative; overflow: hidden;
 }
-.project.revealed { opacity: 1; transform: translateY(0); }
+.project.scroll-reveal {
+  opacity: 0; transform: translateY(40px);
+}
+.project.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
 .project::before {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
   background: var(--accent); opacity: 0; transition: opacity 0.4s var(--ease);
@@ -156,9 +164,12 @@ section { position: relative; z-index: 1; padding: 100px 24px; max-width: 860px;
 .contact-item {
   display: flex; align-items: center; gap: 14px; padding: 18px 20px;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
-  transition: all 0.3s var(--ease); opacity: 0; transform: translateY(24px);
+  transition: all 0.3s var(--ease);
 }
-.contact-item.revealed { opacity: 1; transform: translateY(0); }
+.contact-item.scroll-reveal {
+  opacity: 0; transform: translateY(24px);
+}
+.contact-item.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
 .contact-item:hover { border-color: var(--accent); background: var(--surface-raised); }
 .contact-item svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 .contact-item span { font-size: 14px; font-weight: 500; }
